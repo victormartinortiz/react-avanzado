@@ -17,3 +17,20 @@ export const fadeIn = ({ time = '1s', type = 'ease' } = {}) =>
   css`
     animation: ${time} ${fadeInKeyFrames} ${type};
   `;
+
+const fadeInDownKeyFrames = keyframes`
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0) scale(.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(.5);
+  }
+`;
+
+export const fadeInDown = ({ time = '1s' } = {}) =>
+  css`
+    animation: ${time} ${fadeInDownKeyFrames};
+  `;
