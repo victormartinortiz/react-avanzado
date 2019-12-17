@@ -24,12 +24,3 @@ export const Img = styled.img`
   object-fit: cover;
   box-shadow: 0 10px 14px rgba(0,0,0,.2);
 `;
-
-export const Button = styled.button`
-  display: flex;
-  align-items: center;
-  padding-top: 8px;
-  & svg {
-    margin-right: 4px;
-  }
-`;
