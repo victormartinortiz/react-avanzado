@@ -1,28 +1,46 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
-import { ListOfCategories } from './components/ListOfCategories';
-import { ListOfPhotoCardsWithQuery } from './containers/ListOfPhotoCardsWithQuery';
-import { PhotoCardWithQuery } from './containers/PhotoCardWithQuery';
-import { Logo } from './components/Logo';
+import { Router } from '@reach/router';
 
+import { NavBar } from './components/NavBar';
+import { Logo } from './components/Logo';
+import { Home } from './pages/Home';
+import { Detail } from './pages/Detail';
+import { Favs } from './pages/Favs';
+import { User } from './pages/User';
+import { NotRegisteredUser } from './pages/NotRegisteredUser';
 import { GlobalStyle } from './components/styles/GlobalStyles';
 
-export const App = () => {
-  const urlParams = new window.URLSearchParams(window.location.search);
-  const detailId = urlParams.get('detail');
+const UserLogged = ({ children }) => {
+  return children({ isAuth: true });
+};
 
+export const App = () => {
   return (
     <>
       <GlobalStyle />
       <Logo />
-      {detailId ? (
-        <PhotoCardWithQuery id={detailId} />
-      ) : (
-        <>
-          <ListOfCategories />
-          <ListOfPhotoCardsWithQuery categoryId={3} />
-        </>
-      )}
+      <Router>
+        <Home path='/' />
+        <Home path='/pet/:categoryId' />
+        <Detail path='/detail/:detailId' />
+      </Router>
+      <UserLogged>
+        {({ isAuth }) =>
+          isAuth ? (
+            <Router>
+              <User path='/user' />
+              <Favs path='/fav' />
+            </Router>
+          ) : (
+            <Router>
+              <NotRegisteredUser path='/user' />
+              <NotRegisteredUser path='/fav' />
+            </Router>
+          )
+        }
+      </UserLogged>
+      <NavBar />
     </>
   );
 };
