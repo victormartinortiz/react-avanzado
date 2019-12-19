@@ -1,3 +1,4 @@
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
 import { Router } from '@reach/router';
@@ -11,9 +12,7 @@ import { User } from './pages/User';
 import { NotRegisteredUser } from './pages/NotRegisteredUser';
 import { GlobalStyle } from './components/styles/GlobalStyles';
 
-const UserLogged = ({ children }) => {
-  return children({ isAuth: true });
-};
+import Context from './Context';
 
 export const App = () => {
   return (
@@ -25,7 +24,7 @@ export const App = () => {
         <Home path='/pet/:categoryId' />
         <Detail path='/detail/:detailId' />
       </Router>
-      <UserLogged>
+      <Context.Consumer>
         {({ isAuth }) =>
           isAuth ? (
             <Router>
@@ -39,7 +38,7 @@ export const App = () => {
             </Router>
           )
         }
-      </UserLogged>
+      </Context.Consumer>
       <NavBar />
     </>
   );
