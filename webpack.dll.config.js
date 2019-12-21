@@ -9,26 +9,29 @@ module.exports = {
     modules: [
       'react',
       'react-dom',
-      'react-redux',
-      'react-router-dom',
-      'redux'
+      '@reach/router',
+      'styled-components',
+      'prop-types',
+      'react-helmet',
+      'react-icons',
+      'react-apollo',
+      'intersection-observer',
+      'apollo-boost',
+      'graphql',
     ]
   },
   optimization: {
-    minimizer: [
-      new TerserJSPlugin(),
-      new OptimizeCSSAssetsPlugin()
-    ]
+    minimizer: [new TerserJSPlugin(), new OptimizeCSSAssetsPlugin()]
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].[hash].dll.js',
-    library: '[name]',
+    library: '[name]'
   },
   plugins: [
     new webpack.DllPlugin({
       name: '[name]',
       path: path.join(__dirname, '[name]-manifest.json')
     })
-  ],
-}
+  ]
+};

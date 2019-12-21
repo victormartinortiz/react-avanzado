@@ -10,7 +10,7 @@ import { List, Item } from './styles';
 
 const API_URL = 'https://petgram-server-victor-fnrx15a1n.now.sh/categories';
 
-export const ListOfCategories = params => {
+const ListOfCategoriesComponent = params => {
   const [data, loading] = useFetch(API_URL);
   const [showFixed, setShowFixed] = useState(false);
 
@@ -50,3 +50,5 @@ export const ListOfCategories = params => {
     </>
   );
 };
+
+export const ListOfCategories = React.memo(ListOfCategoriesComponent)
