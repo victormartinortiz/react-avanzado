@@ -8,7 +8,7 @@ import { useFetch } from '../../hooks/useFetch';
 
 import { List, Item } from './styles';
 
-const API_URL = 'https://petgram-server-victor-fnrx15a1n.now.sh/categories';
+const API_URL = 'https://petgram-server-victor.now.sh/categories';
 
 const ListOfCategoriesComponent = params => {
   const [data, loading] = useFetch(API_URL);

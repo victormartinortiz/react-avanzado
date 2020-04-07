@@ -62,6 +62,8 @@ module.exports = {
     new WebpackPwaManifestPlugin({
       name: 'Petgram | tu app de fotos de mascotas',
       short_name: 'Petgram',
+      start_url: '/',
+      scope: '/',
       description:
         'Con petgram puedes encontrar fotos de animales domésticos mas facilmente',
       background_color: '#fff',
@@ -86,9 +88,7 @@ module.exports = {
           }
         },
         {
-          urlPattern: new RegExp(
-            'https://petgram-server-victor-fnrx15a1n.now.sh/'
-          ),
+          urlPattern: new RegExp('https://petgram-server-victor.now.sh/'),
           handler: 'NetworkFirst',
           options: {
             cacheName: 'api'

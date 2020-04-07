@@ -1,7 +1,5 @@
 {
   "version": 2,
-  "name": "petgram-server-victor",
-  "alias": ["petgram-api-victor"],
   "builds": [{ "src": "index.js", "use": "@now/node" }],
   "routes": [{
     "headers": {

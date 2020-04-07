@@ -21,7 +21,7 @@ export const PhotoCard = ({ id, liked, likes = 0, src = DEFAULT_IMAGE }) => {
         <>
           <Link to={`/detail/${id}`}>
             <ImgWrapper>
-              <Img src={src} />
+              <Img src={src} alt='animals'/>
             </ImgWrapper>
           </Link>
           <ToggleLikeMutation>
